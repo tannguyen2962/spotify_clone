@@ -1,5 +1,5 @@
 {
-  "name": "goccuathi-spa",
+  "name": "webpack-js-boilerplate",
   "version": "1.0.0",
   "description": "A pet project for applying React Hooks, Google Oauth2, WebSocket, PWA and AWS Services...",
   "main": "main.js",
@@ -16,15 +16,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anhthi-ieig/goccuathi-spa.git"
+    "url": "git+https://github.com/webpack-js-boilerplate/webpack-js-boilerplate.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/anhthi-ieig/goccuathi-spa/issues"
+    "url": "https://github.com/webpack-js-boilerplate/webpack-js-boilerplate/issues"
   },
-  "homepage": "https://github.com/anhthi-ieig/goccuathi-spa#readme",
+  "homepage": "https://github.com/webpack-js-boilerplate/webpack-js-boilerplate#readme",
   "devDependencies": {
     "@babel/cli": "^7.14.5",
     "@babel/core": "^7.14.6",
@@ -57,7 +57,6 @@
     "less": "^4.1.1",
     "less-loader": "^10.0.1",
     "mini-css-extract-plugin": "^2.0.0",
-    "moment-locales-webpack-plugin": "^1.2.0",
     "postcss-loader": "^6.1.1",
     "style-resources-loader": "^1.4.1",
     "terser-webpack-plugin": "^5.1.4",

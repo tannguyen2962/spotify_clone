@@ -19,9 +19,12 @@
     "public/*.js"
   ],
   "rules": {
-    "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": "off",
+    "import/prefer-default-export": "off",
+    "indent": ["warn", 4],
     "react/forbid-prop-types": "off",
+    "react/jsx-indent": ["warn", 4],
+    "react/jsx-indent-props": ["error", 4],
     "react/jsx-props-no-spreading": "off",
     "react/jsx-filename-extension": [
       "error",

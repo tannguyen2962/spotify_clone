@@ -2,8 +2,9 @@
  * Plugins
  */
 
-const miniCssExtractPlugin = require('./plugins/mini-css-extract-plugin');
 const htmlWebpackPlugin = require('./plugins/html-webpack-plugin');
+const miniCssExtractPlugin = require('./plugins/mini-css-extract-plugin');
+const momentLocalesWebpackPlugin = require('./plugins/moment-locales-webpack-plugin');
 const dotEnv = require('./plugins/dot-env');
 
 /**
@@ -33,8 +34,9 @@ module.exports = {
         ],
     },
     plugins: [
-        miniCssExtractPlugin(),
         htmlWebpackPlugin(),
+        miniCssExtractPlugin(),
+        momentLocalesWebpackPlugin(),
         dotEnv(),
     ],
     optimization: {

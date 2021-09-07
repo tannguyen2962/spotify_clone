@@ -4,39 +4,39 @@ const path = require('path');
 const rootDir = fs.realpathSync(process.cwd());
 
 module.exports = {
-    /**
-     * Render
-     */
+  /**
+   * Render
+   */
 
-    render: path.join(rootDir, 'src/render.js'),
+  render: path.join(rootDir, 'src/render.js'),
 
-    /**
-     * Index HTML
-     */
+  /**
+   * Index HTML
+   */
 
-    indexHtml: path.join(rootDir, 'src/index.html'),
+  indexHtml: path.join(rootDir, 'src/index.html'),
 
-    /**
-     * Style Resources
-     */
+  /**
+   * Style Resources
+   */
 
-    styleResources: path.join(rootDir, 'src/styles/resources.less'),
+  styleResources: path.join(rootDir, 'src/styles/resources.less'),
 
-    /**
-     * PostCss
-     */
+  /**
+   * PostCss
+   */
 
-    postCss: path.join(rootDir, 'config/postcss.config.js'),
+  postCss: path.join(rootDir, 'config/postcss.config.js'),
 
-    /**
-     * Public Dir
-     */
+  /**
+   * Public Dir
+   */
 
-    publicDir: path.join(rootDir, 'public'),
+  publicDir: path.join(rootDir, 'public'),
 
-    /**
-     * Source Dir
-     */
+  /**
+   * Source Dir
+   */
 
-    srcDir: path.join(rootDir, 'src'),
+  srcDir: path.join(rootDir, 'src'),
 };

@@ -1,6 +1,7 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-module.exports = () => new MiniCssExtractPlugin({
-    filename: '[name].[hash:8].css',
+module.exports = () =>
+  new MiniCssExtractPlugin({
+    filename: '[name].[contenthash:8].css',
     ignoreOrder: true,
-});
+  });

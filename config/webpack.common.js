@@ -19,27 +19,17 @@ const processSvg = require('./rules/process-svg');
 const appPath = require('./app-path.config');
 
 module.exports = {
-    entry: appPath.render,
-    output: {
-        path: appPath.publicDir,
-        filename: '[name].[chunkhash:8].js',
-        chunkFilename: '[name].[chunkhash:8].chunk.js',
-    },
-    module: {
-        rules: [
-            processJs(),
-            processLessInSrc(),
-            processLessInAntDesign(),
-            processSvg(),
-        ],
-    },
-    plugins: [
-        htmlWebpackPlugin(),
-        miniCssExtractPlugin(),
-        momentLocalesWebpackPlugin(),
-        dotEnv(),
-    ],
-    optimization: {
-        splitChunks: { chunks: 'all' },
-    },
+  entry: appPath.render,
+  output: {
+    path: appPath.publicDir,
+    filename: '[name].[chunkhash:8].js',
+    chunkFilename: '[name].[chunkhash:8].chunk.js',
+  },
+  module: {
+    rules: [processJs(), processLessInSrc(), processLessInAntDesign(), processSvg()],
+  },
+  plugins: [htmlWebpackPlugin(), miniCssExtractPlugin(), momentLocalesWebpackPlugin(), dotEnv()],
+  optimization: {
+    splitChunks: { chunks: 'all' },
+  },
 };

@@ -15,18 +15,10 @@ const terserWebpackPlugin = require('./plugins/terser-webpack-plugin');
 const cssMinimizerWebpackPlugin = require('./plugins/css-minimizer-webpack-plugin');
 
 module.exports = merge(webpackCommon, {
-    mode: 'production',
-    plugins: [
-        bundleStatsPlugin(),
-        copyWebpackPlugin(),
-        compressionPlugin(),
-        cleanWebpackPlugin(),
-    ],
-    optimization: {
-        minimize: true,
-        minimizer: [
-            terserWebpackPlugin(),
-            cssMinimizerWebpackPlugin(),
-        ],
-    },
+  mode: 'production',
+  plugins: [bundleStatsPlugin(), copyWebpackPlugin(), compressionPlugin(), cleanWebpackPlugin()],
+  optimization: {
+    minimize: true,
+    minimizer: [terserWebpackPlugin(), cssMinimizerWebpackPlugin()],
+  },
 });

@@ -1,9 +1,14 @@
 import React, { memo } from 'react';
 
-import './styles/base.less';
+import Home from './pages/home';
+import './styles/base.scss';
 
 const App = () => {
-  return <div>Hello world</div>;
+  return (
+    <div>
+      <Home />
+    </div>
+  );
 };
 
 export default memo(App);

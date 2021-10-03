@@ -3,8 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const appPath = require('../app-path.config');
 
 module.exports = () => ({
-  test: /\.less$/,
-  include: appPath.srcDir,
+  test: /\.scss$/,
   use: [
     MiniCssExtractPlugin.loader,
     {
@@ -20,12 +19,12 @@ module.exports = () => ({
       loader: 'postcss-loader',
       options: {
         postcssOptions: {
-          plugins: [['autoprefixer']],
+          plugins: [['postcss-preset-env']],
         },
       },
     },
     {
-      loader: 'less-loader',
+      loader: 'sass-loader',
     },
     {
       loader: 'style-resources-loader',

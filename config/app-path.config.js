@@ -20,13 +20,7 @@ module.exports = {
    * Style Resources
    */
 
-  styleResources: path.join(rootDir, 'src/styles/resources.less'),
-
-  /**
-   * PostCss
-   */
-
-  postCss: path.join(rootDir, 'config/postcss.config.js'),
+  styleResources: path.join(rootDir, 'src/styles/resources.scss'),
 
   /**
    * Public Dir

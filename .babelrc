@@ -1,8 +1,5 @@
 {
-  "presets": [
-    "@babel/preset-env",
-    "@babel/preset-react"
-  ],
+  "presets": ["@babel/preset-env", "@babel/preset-react"],
   "plugins": [
     [
       "react-intl-auto",
@@ -17,19 +14,8 @@
       }
     ],
     [
-      "import",
-      {
-        "libraryName": "antd",
-        "style": true
-      }
-    ],
-    [
       "transform-imports",
       {
-        "@ant-design/icons": {
-          "transform": "@ant-design/icons/${member}",
-          "preventFullImport": true
-        },
         "lodash": {
           "transform": "lodash/${member}",
           "preventFullImport": true

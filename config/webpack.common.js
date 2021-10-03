@@ -4,17 +4,17 @@
 
 const htmlWebpackPlugin = require('./plugins/html-webpack-plugin');
 const miniCssExtractPlugin = require('./plugins/mini-css-extract-plugin');
+const stylelintWebpackPlugin = require('./plugins/stylelint-webpack-plugin');
 const momentLocalesWebpackPlugin = require('./plugins/moment-locales-webpack-plugin');
-const dotEnv = require('./plugins/dot-env');
+const dotEnvWebpack = require('./plugins/dotenv-webpack');
 
 /**
  * Module Rules
  */
 
 const processJs = require('./rules/process-js');
-const processLessInSrc = require('./rules/process-less-in-src');
-const processLessInAntDesign = require('./rules/process-less-in-antd');
-const processSvg = require('./rules/process-svg');
+const processScss = require('./rules/process-scss');
+const processImages = require('./rules/process-images');
 
 const appPath = require('./app-path.config');
 
@@ -26,9 +26,15 @@ module.exports = {
     chunkFilename: '[name].[chunkhash:8].chunk.js',
   },
   module: {
-    rules: [processJs(), processLessInSrc(), processLessInAntDesign(), processSvg()],
+    rules: [processJs(), processScss(), processImages()],
   },
-  plugins: [htmlWebpackPlugin(), miniCssExtractPlugin(), momentLocalesWebpackPlugin(), dotEnv()],
+  plugins: [
+    htmlWebpackPlugin(),
+    miniCssExtractPlugin(),
+    stylelintWebpackPlugin(),
+    momentLocalesWebpackPlugin(),
+    dotEnvWebpack(),
+  ],
   optimization: {
     splitChunks: { chunks: 'all' },
   },

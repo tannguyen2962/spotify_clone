@@ -1,6 +1,6 @@
 {
   "parser": "babel-eslint",
-  "extends": ["airbnb", "airbnb/hooks", "prettier/prettier"],
+  "extends": ["airbnb", "airbnb/hooks", "prettier"],
   "plugins": ["prettier"],
   "parserOptions": {
     "ecmaVersion": 2015,
@@ -19,12 +19,33 @@
     "arrow-body-style": "off",
     "import/no-extraneous-dependencies": "off",
     "import/prefer-default-export": "off",
-    "max-lines": ["error", { "max": 800, "skipBlankLines": true }],
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/media-has-caption": "off",
+    "react/button-has-type": "off",
     "react/forbid-prop-types": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-filename-extension": "off",
     "react/jsx-first-prop-new-line": [1, "multiline"],
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", "parent", "sibling"]
+      }
+    ],
+    "padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": ["block-like"]
+      },
+      {
+        "blankLine": "always",
+        "prev": ["block-like"],
+        "next": "*"
+      }
+    ],
     "react/jsx-max-props-per-line": [
       "warn",
       {
@@ -32,16 +53,5 @@
         "when": "multiline"
       }
     ]
-  },
-  "settings": {
-    "react": {
-      "version": "detect"
-    },
-    "import/resolver": {
-      "node": {
-        "moduleDirectory": ["node_modules", "src/"],
-        "extensions": [".js"]
-      }
-    }
   }
 }

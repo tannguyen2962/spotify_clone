@@ -2,8 +2,11 @@
   "editor.formatOnSave": true,
   "eslint.alwaysShowStatus": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.eol": "\n",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "files.eol": "\n"
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

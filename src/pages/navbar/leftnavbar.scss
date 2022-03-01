@@ -1,0 +1,84 @@
+.leftNavbar {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
+  background-color: $color-black;
+  position: fixed;
+  color: white;
+  padding: 2rem;
+  .active {
+    color: red;
+  }
+
+  .title {
+    display: flex;
+    color: $color-black;
+    width: 3rem;
+    height: 3rem;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    h1 {
+      padding: 0px 10px;
+      color: white;
+    }
+    .logo {
+      display: flex;
+      justify-content: center;
+
+      svg {
+        width: 3rem;
+        height: 3rem;
+      }
+    }
+  }
+  .optionNavbar {
+    padding: 0;
+    ul {
+      list-style: none;
+      padding: 0 !important;
+    }
+    .icon {
+      opacity: 0.8;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+
+      svg {
+        width: 2rem;
+        height: 2rem;
+        padding: 5px 10px;
+      }
+      a {
+        color: $color-white;
+        text-decoration: none;
+
+        span {
+          font-size: 0.875rem;
+          line-height: 0.875rem;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  .bottomNavbar {
+    margin-top: 20px;
+    border-bottom: 1px solid;
+    .iconBottom {
+      span {
+        font-size: 0.875rem;
+        margin: auto 0;
+      }
+      display: flex;
+
+      SVG {
+        align-items: center;
+        width: 2rem;
+        height: 2rem;
+        padding: 5px 10px;
+      }
+    }
+  }
+}

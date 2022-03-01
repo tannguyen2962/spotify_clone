@@ -1,0 +1,22 @@
+.header {
+  margin-left: 300px;
+  padding: 10px;
+  div[class*='ant-select-selector'] {
+    padding: 5px 0px;
+    border: 1px solid;
+    border-radius: 10px;
+    span[class*='ant-select-selection-search'] {
+    }
+
+    span[class*='ant-input-group'] {
+      input {
+        border: 0px;
+        width: 250px;
+      }
+    }
+    button[class*='ant-btn-primary'] {
+      border: 0px;
+      background-color: transparent;
+    }
+  }
+}

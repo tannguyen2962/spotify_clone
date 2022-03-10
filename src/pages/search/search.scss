@@ -1,22 +1,44 @@
 .header {
-  margin-left: 300px;
-  padding: 10px;
-  div[class*='ant-select-selector'] {
-    padding: 5px 0px;
-    border: 1px solid;
-    border-radius: 10px;
-    span[class*='ant-select-selection-search'] {
-    }
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
 
-    span[class*='ant-input-group'] {
-      input {
+  .searchNavbar {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    font-size: 12px;
+
+    span[class*='ant-input-group-addon'] {
+      font-size: 5px;
+      button {
         border: 0px;
-        width: 250px;
       }
     }
-    button[class*='ant-btn-primary'] {
-      border: 0px;
-      background-color: transparent;
+  }
+
+  .nameUser {
+    ul[class*='ant-menu-inline'] {
+      background-color: rgba(71, 67, 67, 0.3);
+      border-radius: 20px;
+      border-right: 0px;
+      li[class*='ant-menu-submenu-inline'] {
+        i {
+          color: $color-white;
+        }
+      }
+
+      span[class*='ant-menu-title-content'] {
+        color: $color-white;
+      }
     }
+  }
+
+  SVG {
+    width: 2rem;
+    height: 2rem;
   }
 }

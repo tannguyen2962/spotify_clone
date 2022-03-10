@@ -1,12 +1,8 @@
 import React from 'react';
-import LeftNavbar from './navbar/leftnavbar';
+import FormValue from './form/form';
 
 const Home = () => {
-  return (
-    <div>
-      <LeftNavbar />
-    </div>
-  );
+  return <FormValue />;
 };
 
 export default Home;

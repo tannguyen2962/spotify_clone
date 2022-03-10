@@ -14,6 +14,7 @@ const dotEnvWebpack = require('./plugins/dotenv-webpack');
 
 const processJs = require('./rules/process-js');
 const processScss = require('./rules/process-scss');
+const processCss = require('./rules/process-css');
 const processImages = require('./rules/process-images');
 
 const appPath = require('./app-path.config');
@@ -26,7 +27,7 @@ module.exports = {
     chunkFilename: '[name].[chunkhash:8].chunk.js',
   },
   module: {
-    rules: [processJs(), processScss(), processImages()],
+    rules: [processJs(), processScss(), processCss(), processImages()],
   },
   plugins: [
     htmlWebpackPlugin(),

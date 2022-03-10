@@ -1,0 +1,13 @@
+.app-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  .left-nav-bar-wrapper {
+    width: 250px;
+  }
+
+  .display-content-wrapper {
+    flex-grow: 1;
+  }
+}

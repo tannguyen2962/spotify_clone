@@ -1,0 +1,28 @@
+.category {
+  width: 180px;
+  max-width: 200px;
+  height: 180px;
+
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: rgba(107, 224, 71, 0.9);
+  .title {
+    padding: 20px;
+    h2 {
+      margin: 0;
+      color: $color-white;
+      font-weight: 700;
+    }
+  }
+
+  .content {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    img {
+      transform: rotate(25deg) translate(18%, -2%);
+      object-fit: cover;
+    }
+  }
+}

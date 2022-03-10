@@ -1,15 +1,20 @@
 import React from 'react';
-import ReactAudioPlayer from 'react-audio-player';
+import AudioPlayer from 'react-h5-audio-player';
 import Style from './audioplayer.scss';
 
-const AudioPlayer = () => {
+const Player = () => {
   return (
     <div>
       <div className={Style.audioplayer}>
-        <ReactAudioPlayer src="my_audio_file.ogg" autoPlay controls loop />
+        <AudioPlayer
+          src="https://zingmp3.vn/bai-hat/Khong-The-Tin-Noi-Hoaprox-Remix-Hoaprox/ZW7IUIAE.html"
+          autoPlay
+          controls
+          loop
+        />
       </div>
     </div>
   );
 };
 
-export default AudioPlayer;
+export default Player;

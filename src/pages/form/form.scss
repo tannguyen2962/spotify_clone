@@ -1,3 +1,8 @@
 .form {
   text-align: center;
+  .btnadd {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
 }

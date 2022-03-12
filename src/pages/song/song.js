@@ -7,8 +7,8 @@ const Song = () => {
     <div className={Styles.song}>
       <img
         alt="example"
-        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-        style={{ width: 100, height: 100 }}
+        src="https://i.scdn.co/image/ab67616d00001e0295e12c547fd9fe93d66b6864"
+        style={{ width: 120, height: 120 }}
       />
       <div className={Styles.play}>
         <SVG src="src/assets/svg/play-icon.svg" />

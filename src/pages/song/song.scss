@@ -1,11 +1,11 @@
 .song {
   position: relative;
   border-radius: 10px;
-  width: 180px;
+  width: 150px;
   height: auto;
   padding: 1rem;
-  background-color: rgba(107, 94, 94, 0.5);
-  opacity: 0.8;
+  background-color: rgba(216, 187, 187, 0.5);
+
   overflow: hidden;
 
   svg {
@@ -38,6 +38,6 @@
   }
 
   .nameAndArtist {
-    line-height: 0.2;
+    line-height: 1;
   }
 }

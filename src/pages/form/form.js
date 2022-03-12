@@ -1,71 +1,128 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Space } from 'antd';
+import { Table, Space, Modal, Form, Input, Button, message } from 'antd';
+
 import axios from 'axios';
+
+import Search from '../search/search';
 import Styles from './form.scss';
 
-const FormValue = () => {
-  const { Column, ColumnGroup } = Table;
+const { Column, ColumnGroup } = Table;
+
+const ChangeValue = () => {
   const [song, setSong] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedSong, setSelectedSong] = useState({});
+  const [mode, setMode] = useState('');
 
   const dataSong = () => {
-    axios.get('localhost:4000/songs').then((response) => {
-      console.log('data', response.data);
+    axios.get('http://localhost:4000/songs').then((response) => {
       setSong(response.data);
     });
   };
 
+  const updateSong = async (formValues) => {
+    if (mode === 'edit') {
+      await axios.put(`http://localhost:4000/song/${selectedSong._id}`, formValues);
+
+      message.success('update success');
+    }
+
+    if (mode === 'create') {
+      await axios.post('http://localhost:4000/song/', formValues);
+
+      setSelectedSong(null);
+      message.success('update success');
+    }
+  };
+
   useEffect(() => {
     dataSong();
-  }, []);
+  }, [song]);
 
-  // const song = [
-  //   {
-  //     key: '1',
-  //     Name: 'John',
-  //     Artist: 'Brown',
-  //     Category: 32,
-  //     Link: 'New York No. 1 Lake Park',
-  //     Avatar: 'New York No. 1 Lake Park',
-  //   },
-  //   {
-  //     key: '2',
-  //     Name: 'Jim',
-  //     Artist: 'Green',
-  //     Category: 42,
-  //     Link: 'London No. 1 Lake Park',
-  //     Avatar: 'New York No. 1 Lake Park',
-  //   },
-  //   {
-  //     key: '3',
-  //     Name: 'Joe',
-  //     Artist: 'Black',
-  //     Category: 32,
-  //     Link: 'Sidney No. 1 Lake Park',
-  //     Avatar: 'New York No. 1 Lake Park',
-  //   },
-  // ];
   return (
     <div className={Styles.form}>
-      <Table dataSource={song}>
+      <Search />
+      <div className={Styles.btnadd}>
+        <Button
+          onClick={() => {
+            setIsOpen(true);
+            setMode('create');
+          }}
+          type="primary"
+        >
+          Add Song
+        </Button>
+      </div>
+      <Modal
+        title="Basic Modal"
+        visible={isOpen}
+        onCancel={() => {
+          setSelectedSong(null);
+          setMode(null);
+          setIsOpen(null);
+        }}
+      >
+        <div>
+          <Form onFinish={updateSong} layout="vertical" initialValues={selectedSong}>
+            <Form.Item name="fullname" label="FullName" rules={[{ required: true }]}>
+              <Input />
+            </Form.Item>
+            <Form.Item name="artist" label="Artist" rules={[{ required: true }]}>
+              <Input />
+            </Form.Item>
+            <Form.Item name="category" label="Category" rules={[{ required: true }]}>
+              <Input />
+            </Form.Item>
+            <Form.Item name="link" label="Link">
+              <Input />
+            </Form.Item>
+            <Form.Item name="avatar" label="Avatar">
+              <Input />
+            </Form.Item>
+            <Form.Item>
+              <Button type="primary" htmlType="submit">
+                Submit
+              </Button>
+            </Form.Item>
+          </Form>{' '}
+        </div>
+      </Modal>
+      <Table dataSource={song} rowKey="_id" pageNumber={5}>
         <ColumnGroup title="Name" align="center">
-          <Column align="center" title="Name" dataIndex="Name" key="Name" />
-          <Column align="center" title="Artist" dataIndex="Artist" key="Artist" />
-          <Column align="center" title="Category" dataIndex="Category" key="Category" />
+          <Column align="center" title="Name" dataIndex="fullname" key="fullname" />
+          <Column align="center" title="Artist" dataIndex="artist" key="artist" />
+          <Column align="center" title="Category" dataIndex="category" key="category" />
         </ColumnGroup>
         <ColumnGroup title="Link & Avatar" align="center">
-          <Column align="center" title="Link" dataIndex="Link" key="Link" />
-          <Column align="center" title="Avatar" dataIndex="Avatar" key="Avatar" />
+          <Column align="center" title="Link" dataIndex="link" key="Link" />
+          <Column align="center" title="Avatar" dataIndex="avatar" key="avatar" />
         </ColumnGroup>
 
         <Column
           align="center"
           title="Action"
-          key="action"
+          key="id"
           render={(text, record) => (
-            <Space size="middle">
-              <a>Invite {record.lastName}</a>
-              <a>Delete</a>
-              <a>Update</a>
+            <Space key={record.id} size="middle">
+              {/*  button Delete */}
+
+              <button
+                onClick={async () => {
+                  await axios.delete(`http://localhost:4000/song/${record._id}`);
+                }}
+              >
+                Delete
+              </button>
+              {/*  button Update */}
+              <button
+                onClick={() => {
+                  setIsOpen(true);
+                  setMode('edit');
+                  setSelectedSong(record);
+                }}
+              >
+                Update
+              </button>
             </Space>
           )}
         />
@@ -74,4 +131,4 @@ const FormValue = () => {
   );
 };
 
-export default FormValue;
+export default ChangeValue;

@@ -21,6 +21,7 @@
   }
 
   .nameUser {
+    z-index: 99;
     ul[class*='ant-menu-inline'] {
       background-color: rgba(71, 67, 67, 0.3);
       border-radius: 20px;

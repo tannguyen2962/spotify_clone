@@ -52,7 +52,6 @@ const LeftNavbar = () => {
           <span> Liked Songs</span>
         </div>
       </div>
-      <br />
     </div>
   );
 };

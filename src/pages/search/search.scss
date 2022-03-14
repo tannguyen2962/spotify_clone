@@ -1,0 +1,49 @@
+.listsong {
+  display: flex;
+  flex-wrap: wrap;
+  .song {
+    margin: 10px;
+    position: relative;
+    border-radius: 10px;
+    width: 150px;
+    height: auto;
+    padding: 1rem;
+    background-color: rgba(216, 187, 187, 0.5);
+
+    overflow: hidden;
+
+    svg {
+      display: none;
+    }
+
+    .img {
+      object-fit: cover;
+    }
+
+    &:hover {
+      opacity: 1;
+
+      .play {
+        position: absolute;
+        top: 65%;
+        left: 80%;
+        transform: translate(-50%, -50%);
+        animation-delay: 1s;
+        animation-duration: 2s;
+        transition: 0.2s;
+
+        svg {
+          width: 3rem;
+          height: 3rem;
+          display: block;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .nameAndArtist {
+      padding: 5px 0px;
+      line-height: 1;
+    }
+  }
+}

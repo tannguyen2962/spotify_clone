@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Space, Modal, Form, Input, Button, message } from 'antd';
-
 import axios from 'axios';
-
-import Search from '../search/search';
+import Search from '../header/header';
 import Styles from './form.scss';
 
 const { Column, ColumnGroup } = Table;

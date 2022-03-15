@@ -1,8 +1,7 @@
 import React from 'react';
-import FormValue from './form/form';
 
 const Home = () => {
-  return <FormValue />;
+  return <div> home</div>;
 };
 
 export default Home;

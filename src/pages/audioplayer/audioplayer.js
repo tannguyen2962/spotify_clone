@@ -1,5 +1,6 @@
 import React from 'react';
 import AudioPlayer from 'react-h5-audio-player';
+
 import Style from './audioplayer.scss';
 
 const Player = () => {
@@ -7,7 +8,7 @@ const Player = () => {
     <div>
       <div className={Style.audioplayer}>
         <AudioPlayer
-          src="https://zingmp3.vn/bai-hat/Khong-The-Tin-Noi-Hoaprox-Remix-Hoaprox/ZW7IUIAE.html"
+          src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
           autoPlay
           controls
           loop

@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Table, Space, Modal, Form, Input, Button, message } from 'antd';
 import axios from 'axios';
 import Search from '../header/header';
-import Styles from './form.scss';
+import Styles from './dasboard.scss';
 
 const { Column, ColumnGroup } = Table;
 
-const ChangeValue = () => {
+const Dashboard = () => {
   const [song, setSong] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedSong, setSelectedSong] = useState({});
@@ -129,4 +129,4 @@ const ChangeValue = () => {
   );
 };
 
-export default ChangeValue;
+export default Dashboard;

@@ -1,7 +1,8 @@
 import React from 'react';
+import Dashboard from '../dasboard/dasboard';
 
 const Library = () => {
-  return <div> library</div>;
+  return <Dashboard />;
 };
 
 export default Library;

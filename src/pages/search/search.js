@@ -9,12 +9,20 @@ const Search = () => {
   const [songs, setSongs] = useState([]);
   const [songfilter, setSongFilter] = useState('');
   const { SubMenu } = Menu;
+  const pureUser = localStorage.getItem('targetUser');
+  const user = JSON.parse(pureUser);
+  const [selectedSongs, setSelectedSongs] = useState({});
 
   const dataSong = async () => {
     await axios.get('http://localhost:4000/songs').then((response) => {
       setSongs(response.data);
     });
   };
+
+  // const openPageSong = async (value) => {
+  //   await setSelectedSongs(value);
+  //   console.log('data', selectedSongs);
+  // };
 
   useEffect(() => {
     dataSong();
@@ -42,12 +50,12 @@ const Search = () => {
                 <SubMenu
                   key="sub1"
                   icon={<SVG src="src/assets/svg/spotify.svg" />}
-                  title="User Name"
+                  title={`${user.fullname}`}
                 >
-                  <Menu.Item key="7">Option 7</Menu.Item>
-                  <Menu.Item key="8">Option 8</Menu.Item>
-                  <Menu.Item key="9">Option 9</Menu.Item>
-                  <Menu.Item key="10">Option 10</Menu.Item>
+                  <Menu.Item key="7">Option 1</Menu.Item>
+                  <Menu.Item key="8">Option 2</Menu.Item>
+                  <Menu.Item key="9">Option 3</Menu.Item>
+                  <Menu.Item key="10">Option 4</Menu.Item>
                 </SubMenu>
               </Menu>
             </div>
@@ -75,7 +83,12 @@ const Search = () => {
               <div key={value.id} className={Styles.song}>
                 <img alt="example" src={`${value.avatar}`} style={{ width: 120, height: 120 }} />
                 <div className={Styles.play}>
-                  <button onClick={() => console.log('hihi')}>
+                  <button
+                    onClick={async () => {
+                      await setSelectedSongs(value);
+                      console.log('data', selectedSongs);
+                    }}
+                  >
                     <SVG src="src/assets/svg/play-icon.svg" />
                   </button>
                 </div>

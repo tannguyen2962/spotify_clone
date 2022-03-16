@@ -83,10 +83,10 @@
         top: 45%;
         left: 60%;
         transform: translate(-50%, -50%);
-        animation-delay: 1s;
+        animation: mymove 1s;
         animation-duration: 1s;
         transition: 0.5s;
-        animation: mymove 1s;
+
         button {
           visibility: none;
           background-color: transparent;

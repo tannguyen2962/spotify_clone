@@ -7,6 +7,7 @@ import Styles from './header.scss';
 
 const Header = () => {
   const { SubMenu } = Menu;
+
   return (
     <div className={Styles.header}>
       <div className={Styles.searchNavbar}>
@@ -21,9 +22,9 @@ const Header = () => {
       <div className={Styles.nameUser}>
         <div>
           <Menu mode="inline" style={{ width: 256 }}>
-            <SubMenu key="sub1" icon={<SVG src="src/assets/svg/spotify.svg" />} title="User Name">
-              <Menu.Item key="7">Option 7</Menu.Item>
-              <Menu.Item key="8">Option 8</Menu.Item>
+            <SubMenu key="sub1" icon={<SVG src="src/assets/svg/spotify.svg" />} title="username">
+              <Menu.Item key="7">Option 1</Menu.Item>
+              <Menu.Item key="8">Option 2</Menu.Item>
               <Menu.Item key="9">Option 9</Menu.Item>
               <Menu.Item key="10">Option 10</Menu.Item>
             </SubMenu>

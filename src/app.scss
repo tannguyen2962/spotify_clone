@@ -5,10 +5,11 @@
 
   .left-nav-bar-wrapper {
     width: 250px;
+    z-index: 999;
   }
 
   .display-content-wrapper {
     flex-grow: 1;
-    width: 80%;
+    width: 100%;
   }
 }

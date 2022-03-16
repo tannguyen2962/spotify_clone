@@ -7,12 +7,7 @@ const Player = () => {
   return (
     <div>
       <div className={Style.audioplayer}>
-        <AudioPlayer
-          src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-          autoPlay
-          controls
-          loop
-        />
+        <AudioPlayer src="https://deezer.page.link/SdB3NCCULuxsEMFW6" autoPlay controls loop />
       </div>
     </div>
   );

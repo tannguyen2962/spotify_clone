@@ -12,8 +12,8 @@ const SignUp = () => {
     navigate('/signIn');
   };
 
-  const Finish = async (formValue) => {
-    await axios.post('http://localhost:4000/user', formValue).then((response) => {
+  const Finish = (formValue) => {
+    axios.post('http://localhost:4000/user', formValue).then((response) => {
       setSong(response.data);
       navigate('/signIn');
     });

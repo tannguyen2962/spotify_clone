@@ -4,7 +4,7 @@ import axios from 'axios';
 import Search from '../header/header';
 import Styles from './dasboard.scss';
 
-const { Column, ColumnGroup } = Table;
+const { Column } = Table;
 
 const Dashboard = () => {
   const [song, setSong] = useState([]);
@@ -37,9 +37,8 @@ const Dashboard = () => {
     dataSong();
   }, [song]);
 
-  return (
-    <div className={Styles.form}>
-      <Search />
+  const renderAddSongButton = () => {
+    return (
       <div className={Styles.btnadd}>
         <Button
           onClick={() => {
@@ -51,6 +50,15 @@ const Dashboard = () => {
           Add Song
         </Button>
       </div>
+    );
+  };
+
+  const renderCreateEditFormModal = () => {
+    if (!isOpen) {
+      return null;
+    }
+
+    return (
       <Modal
         title="Basic Modal"
         visible={isOpen}
@@ -85,46 +93,57 @@ const Dashboard = () => {
           </Form>{' '}
         </div>
       </Modal>
-      <Table dataSource={song} rowKey="_id" pageNumber={5}>
-        <ColumnGroup title="Name" align="center">
-          <Column align="center" title="Name" dataIndex="fullname" key="fullname" />
+    );
+  };
+
+  const renderSongTable = () => {
+    return (
+      <div style={{ padding: '16px' }}>
+        <Table dataSource={song} rowKey="_id" pageNumber={5}>
+          <Column width={200} align="center" title="Name" dataIndex="fullname" key="fullname" />
           <Column align="center" title="Artist" dataIndex="artist" key="artist" />
           <Column align="center" title="Category" dataIndex="category" key="category" />
-        </ColumnGroup>
-        <ColumnGroup title="Link & Avatar" align="center">
           <Column align="center" title="Link" dataIndex="link" key="Link" />
           <Column align="center" title="Avatar" dataIndex="avatar" key="avatar" />
-        </ColumnGroup>
+          <Column
+            align="center"
+            title="Action"
+            key="id"
+            render={(text, record) => (
+              <Space key={record.id} size="middle">
+                {/*  button Delete */}
 
-        <Column
-          align="center"
-          title="Action"
-          key="id"
-          render={(text, record) => (
-            <Space key={record.id} size="middle">
-              {/*  button Delete */}
+                <button
+                  onClick={async () => {
+                    await axios.delete(`http://localhost:4000/song/${record._id}`);
+                  }}
+                >
+                  Delete
+                </button>
+                {/*  button Update */}
+                <button
+                  onClick={() => {
+                    setIsOpen(true);
+                    setMode('edit');
+                    setSelectedSong(record);
+                  }}
+                >
+                  Update
+                </button>
+              </Space>
+            )}
+          />
+        </Table>
+      </div>
+    );
+  };
 
-              <button
-                onClick={async () => {
-                  await axios.delete(`http://localhost:4000/song/${record._id}`);
-                }}
-              >
-                Delete
-              </button>
-              {/*  button Update */}
-              <button
-                onClick={() => {
-                  setIsOpen(true);
-                  setMode('edit');
-                  setSelectedSong(record);
-                }}
-              >
-                Update
-              </button>
-            </Space>
-          )}
-        />
-      </Table>
+  return (
+    <div className={Styles.form}>
+      <Search />
+      {renderAddSongButton()}
+      {renderCreateEditFormModal()}
+      {renderSongTable()}
     </div>
   );
 };

@@ -25,22 +25,25 @@ const App = () => {
 
         <div className={styles.displayContentWrapper}>
           <Routes>
-            <Route path="/" element={<Home />} />
-          </Routes>
-          <Routes>
             <Route path="/search" element={<Search />} />
           </Routes>
           <Routes>
             <Route path="/library" element={<Library />} />
           </Routes>
-          <Routes>
+          {/* <Routes>
             <Route path="/audio" element={<InfoSong />} />
+          </Routes> */}
+          <Routes>
+            <Route path="/album/:id" element={<InfoSong />} />
           </Routes>
           <Routes>
             <Route path="/signUp" element={<SignUp />} />
           </Routes>
           <Routes>
             <Route path="/signIn" element={<SignIn />} />
+          </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
           </Routes>
         </div>
       </div>

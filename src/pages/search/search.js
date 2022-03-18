@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import SVG from 'react-inlinesvg';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { Input, AutoComplete, Menu } from 'antd';
 // import Audio from '../audioplayer/audioplayer';
 import Styles from './search.scss';
 
 const Search = () => {
+  const navigate = useNavigate();
+
   const [songs, setSongs] = useState([]);
-  const [songfilter, setSongFilter] = useState('');
+  const [songFilter, setSongFilter] = useState('');
   const { SubMenu } = Menu;
   const pureUser = localStorage.getItem('targetUser');
   const user = JSON.parse(pureUser);
-  const [selectedSongs, setSelectedSongs] = useState({});
 
   const dataSong = async () => {
     await axios.get('http://localhost:4000/songs').then((response) => {
@@ -19,14 +21,14 @@ const Search = () => {
     });
   };
 
-  // const openPageSong = async (value) => {
-  //   await setSelectedSongs(value);
-  //   console.log('data', selectedSongs);
-  // };
+  const redirectToSongDetail = (song) => {
+    navigate(`/album/${song._id}`);
+  };
 
   useEffect(() => {
     dataSong();
   }, [songs]);
+
   return (
     <div>
       <div>
@@ -65,39 +67,32 @@ const Search = () => {
 
       <div className={Styles.listsong}>
         {songs
-          .filter((value) => {
-            if (songfilter === '') {
-              return value;
-            }
-
-            if (value.fullname.toLowerCase().includes(songfilter.toLowerCase())) {
-              return value;
-            }
-
-            if (value.artist.toLowerCase().includes(songfilter.toLowerCase())) {
-              return value;
-            }
-          })
-          .map((value) => {
+          .filter((song) => {
             return (
-              <div key={value.id} className={Styles.song}>
-                <img alt="example" src={`${value.avatar}`} style={{ width: 120, height: 120 }} />
+              song.fullname.toLowerCase().includes(songFilter.toLowerCase()) ||
+              song.category.toLowerCase().includes(songFilter.toLowerCase()) ||
+              song.artist.toLowerCase().includes(songFilter.toLowerCase())
+            );
+          })
+          .map((song) => {
+            return (
+              <div key={song.id} className={Styles.song}>
+                <img
+                  alt="example"
+                  src={`${song.avatar}`}
+                  style={{ width: '120px', height: '120px' }}
+                />
                 <div className={Styles.play}>
-                  <button
-                    onClick={async () => {
-                      await setSelectedSongs(value);
-                      console.log('data', selectedSongs);
-                    }}
-                  >
+                  <button onClick={() => redirectToSongDetail(song)}>
                     <SVG src="src/assets/svg/play-icon.svg" />
                   </button>
                 </div>
                 <div className={Styles.nameAndArtist}>
                   <div>
-                    <h3> {value?.fullname}</h3>
+                    <h3> {song?.fullname}</h3>
                   </div>
                   <div className={Styles.artist}>
-                    <span> {value?.artist}</span>
+                    <span> {song?.artist}</span>
                   </div>
                 </div>
               </div>

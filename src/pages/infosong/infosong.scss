@@ -1,5 +1,6 @@
 .fullInfoSong {
   width: 100%;
+
   background: rgb(2, 0, 36);
   background: linear-gradient(
     90deg,
@@ -19,6 +20,7 @@
     .imgSong {
       img {
         object-fit: cover;
+        border-radius: 5px;
       }
     }
     .nameSong {
@@ -33,7 +35,7 @@
         font-weight: 700;
       }
       span {
-        font-size: 80px;
+        font-size: 60px;
         line-height: 80px;
         font-weight: 800;
         color: white;

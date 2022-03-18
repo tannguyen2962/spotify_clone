@@ -1,9 +1,53 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { message } from 'antd';
 import SVG from 'react-inlinesvg';
+import { useParams } from 'react-router-dom';
 import Header from '../header/header';
 import styles from './infosong.scss';
 
-const infoSong = () => {
+const InfoSong = () => {
+  const [findSong, setFindSong] = useState({});
+  const [likeSong, setLikeSong] = useState({});
+  const { id } = useParams();
+  const pureUser = localStorage.getItem('targetUser');
+
+  const targetUser = JSON.parse(pureUser);
+
+  const getSongs = async () => {
+    const songResult = await axios.get(`http://localhost:4000/song/${id}`);
+    const detectedSong = songResult.data;
+    setFindSong(detectedSong);
+  };
+
+  const getLikeSong = async () => {
+    const resultLikeSong = await axios.get(
+      `http://localhost:4000/likesong/${targetUser._id}/${id}`,
+    );
+    setLikeSong(resultLikeSong.data);
+  };
+
+  const data = {
+    userId: targetUser._id,
+    songId: id,
+  };
+
+  const unLike = async () => {
+    message.error('unlike');
+    await axios.delete(`http://localhost:4000/likesong/${likeSong._id}`);
+  };
+
+  const like = async () => {
+    const addLikeSong = await axios.post('http://localhost:4000/likesong', data);
+    setLikeSong(addLikeSong);
+    message.success('like');
+  };
+
+  useEffect(() => {
+    getSongs();
+    getLikeSong();
+  }, [likeSong]);
+
   return (
     <div className={styles.fullInfoSong}>
       <div>
@@ -11,16 +55,12 @@ const infoSong = () => {
       </div>
       <div className={styles.infoSong}>
         <div className={styles.imgSong}>
-          <img
-            alt="example"
-            src="https://i.scdn.co/image/ab67616d0000b273a1bfb7eae80217d0f56986f3"
-            style={{ width: 250, height: 250 }}
-          />
+          <img alt="example" src={`${findSong.avatar}`} style={{ width: 250, height: 250 }} />
         </div>
         <div className={styles.nameSong}>
           <h5> SINGLE</h5>
-          <span> See Tình</span>
-          <h4> Hoang Thuy Linh </h4>
+          <span>{findSong.fullname}</span>
+          <h4>{findSong.artist} </h4>
         </div>
       </div>
       <div className={styles.option}>
@@ -28,12 +68,18 @@ const infoSong = () => {
           <SVG src="src/assets/svg/play-icon.svg" style={{ width: 60, height: 60 }} />
         </button>
 
-        <button>
-          <SVG src="src/assets/svg/icon-heart.svg" style={{ width: 40, height: 40 }} />
-        </button>
+        {likeSong ? (
+          <button onClick={unLike}>
+            <SVG src="src/assets/svg/icon-heart.svg" style={{ width: 40, height: 40 }} />
+          </button>
+        ) : (
+          <button onClick={like}>
+            <SVG src="src/assets/svg/icon-plus.svg" style={{ width: 40, height: 40 }} />
+          </button>
+        )}
       </div>
     </div>
   );
 };
 
-export default infoSong;
+export default InfoSong;

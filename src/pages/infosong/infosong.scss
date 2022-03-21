@@ -51,7 +51,11 @@
       background-color: transparent;
       border: 0px;
       cursor: pointer;
-      padding-right: 30px;
+    }
+    span {
+      display: flex;
+      color: white;
+      align-items: center;
     }
   }
 }

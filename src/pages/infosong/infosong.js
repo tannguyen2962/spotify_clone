@@ -7,17 +7,23 @@ import Header from '../header/header';
 import styles from './infosong.scss';
 
 const InfoSong = () => {
-  const [findSong, setFindSong] = useState({});
+  const [findSong, setFindSong] = useState([]);
   const [likeSong, setLikeSong] = useState({});
+  const [lengthSongs, setLengthSongs] = useState([]);
   const { id } = useParams();
   const pureUser = localStorage.getItem('targetUser');
-
   const targetUser = JSON.parse(pureUser);
 
   const getSongs = async () => {
     const songResult = await axios.get(`http://localhost:4000/song/${id}`);
     const detectedSong = songResult.data;
     setFindSong(detectedSong);
+  };
+
+  const getLike = async () => {
+    const list = await axios.get(`http://localhost:4000/getLikeSongsBySongId/${id}`);
+    const detectedLikeSong = list.data;
+    setLengthSongs(detectedLikeSong);
   };
 
   const getLikeSong = async () => {
@@ -33,19 +39,21 @@ const InfoSong = () => {
   };
 
   const unLike = async () => {
-    message.error('unlike');
+    message.error(`${findSong.fullname} has been delete to LikeSong`);
     await axios.delete(`http://localhost:4000/likesong/${likeSong._id}`);
   };
 
   const like = async () => {
     const addLikeSong = await axios.post('http://localhost:4000/likesong', data);
     setLikeSong(addLikeSong);
-    message.success('like');
+
+    message.success(`${findSong.fullname} has been add to LikeSong`);
   };
 
   useEffect(() => {
     getSongs();
     getLikeSong();
+    getLike();
   }, [likeSong]);
 
   return (
@@ -69,7 +77,7 @@ const InfoSong = () => {
         </button>
 
         {likeSong ? (
-          <button onClick={unLike}>
+          <button onClick={() => unLike(findSong)}>
             <SVG src="src/assets/svg/icon-heart.svg" style={{ width: 40, height: 40 }} />
           </button>
         ) : (
@@ -77,6 +85,7 @@ const InfoSong = () => {
             <SVG src="src/assets/svg/icon-plus.svg" style={{ width: 40, height: 40 }} />
           </button>
         )}
+        <span>{lengthSongs.length}</span>
       </div>
     </div>
   );

@@ -52,7 +52,7 @@ const Search = () => {
                 <SubMenu
                   key="sub1"
                   icon={<SVG src="src/assets/svg/spotify.svg" />}
-                  title={`${user.fullname}`}
+                  title={`${user?.fullname}`}
                 >
                   <Menu.Item key="7">Option 1</Menu.Item>
                   <Menu.Item key="8">Option 2</Menu.Item>

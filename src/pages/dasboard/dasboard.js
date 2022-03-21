@@ -39,7 +39,7 @@ const Dashboard = () => {
 
   const renderAddSongButton = () => {
     return (
-      <div className={Styles.btnadd}>
+      <div className={Styles.btnAdd}>
         <Button
           onClick={() => {
             setIsOpen(true);

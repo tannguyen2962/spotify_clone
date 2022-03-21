@@ -49,7 +49,9 @@ const LeftNavbar = () => {
         </div>
         <div className={styles.iconBottom}>
           <SVG src="src/assets/svg/icon-heart.svg" />
-          <span> Liked Songs</span>
+          <NavLink exact="true" to="/likesong">
+            <span> Like Song</span>
+          </NavLink>
         </div>
       </div>
     </div>

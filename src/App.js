@@ -5,7 +5,7 @@ import 'react-h5-audio-player/lib/styles.css';
 import Home from './pages/home';
 import Search from './pages/search/search';
 import Library from './pages/library/library';
-// import Audio from './pages/audioplayer/audioplayer';
+import LikeSong from './pages/likesong/likesong';
 import InfoSong from './pages/infosong/infosong';
 import LeftNavbar from './pages/left-navbar/leftnavbar';
 
@@ -33,6 +33,9 @@ const App = () => {
           {/* <Routes>
             <Route path="/audio" element={<InfoSong />} />
           </Routes> */}
+          <Routes>
+            <Route path="/likesong" element={<LikeSong />} />
+          </Routes>
           <Routes>
             <Route path="/album/:id" element={<InfoSong />} />
           </Routes>

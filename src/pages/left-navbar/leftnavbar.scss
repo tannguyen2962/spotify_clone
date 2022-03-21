@@ -71,11 +71,16 @@
     margin-top: 20px;
 
     .iconBottom {
-      span {
-        font-size: 0.875rem;
-        margin: auto 0;
-      }
       display: flex;
+
+      align-items: center;
+      a {
+        span {
+          align-items: center;
+          font-size: 0.875rem;
+          margin: auto 0;
+        }
+      }
 
       SVG {
         align-items: center;

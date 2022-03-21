@@ -7,7 +7,12 @@ const Player = () => {
   return (
     <div>
       <div className={Style.audioplayer}>
-        <AudioPlayer src="https://deezer.page.link/SdB3NCCULuxsEMFW6" autoPlay controls loop />
+        <AudioPlayer
+          src="alles_wie_gehabt_feat_t_blade_jahwe ... _tok_douyin_4345414604056409028.mp3.mp3"
+          autoPlay
+          controls
+          loop
+        />
       </div>
     </div>
   );

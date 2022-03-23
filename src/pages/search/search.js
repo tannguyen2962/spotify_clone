@@ -13,7 +13,7 @@ const Search = () => {
   const [songFilter, setSongFilter] = useState('');
   const { SubMenu } = Menu;
   const pureUser = localStorage.getItem('targetUser');
-  const user = JSON.parse(pureUser);
+  const user = pureUser ? JSON.parse(pureUser) : null;
 
   const dataSong = async () => {
     await axios.get('http://localhost:4000/songs').then((response) => {
@@ -21,8 +21,17 @@ const Search = () => {
     });
   };
 
+  const redirectToDashboard = () => {
+    navigate('/dashboard');
+  };
+
   const redirectToSongDetail = (song) => {
     navigate(`/album/${song._id}`);
+  };
+
+  const logOut = () => {
+    localStorage.setItem('targetUser', '');
+    navigate('/signIn');
   };
 
   useEffect(() => {
@@ -46,22 +55,32 @@ const Search = () => {
               />
             </AutoComplete>
           </div>
-          <div className={Styles.nameUser}>
-            <div>
-              <Menu mode="inline" style={{ width: 256 }}>
-                <SubMenu
-                  key="sub1"
-                  icon={<SVG src="src/assets/svg/spotify.svg" />}
-                  title={`${user?.fullname}`}
-                >
-                  <Menu.Item key="7">Option 1</Menu.Item>
-                  <Menu.Item key="8">Option 2</Menu.Item>
-                  <Menu.Item key="9">Option 3</Menu.Item>
-                  <Menu.Item key="10">Option 4</Menu.Item>
-                </SubMenu>
-              </Menu>
+          {user && (
+            <div className={Styles.nameUser}>
+              <div>
+                <Menu mode="inline" style={{ width: 256 }}>
+                  <SubMenu
+                    key="sub1"
+                    icon={<SVG src="src/assets/svg/spotify.svg" />}
+                    title={`${user?.fullname}`}
+                  >
+                    {user.position === 'Admin' ? (
+                      <Menu.Item key="7">
+                        <button className={Styles.btnRedirect} onClick={redirectToDashboard}>
+                          Dashboard
+                        </button>
+                      </Menu.Item>
+                    ) : null}
+                    <Menu.Item key="8">
+                      <button className={Styles.btnRedirect} onClick={logOut}>
+                        Log Out
+                      </button>
+                    </Menu.Item>
+                  </SubMenu>
+                </Menu>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
 
@@ -76,7 +95,7 @@ const Search = () => {
           })
           .map((song) => {
             return (
-              <div key={song.id} className={Styles.song}>
+              <div key={song._id} className={Styles.song}>
                 <img
                   alt="example"
                   src={`${song.avatar}`}

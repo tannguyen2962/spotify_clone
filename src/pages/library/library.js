@@ -1,5 +1,5 @@
 import React from 'react';
-import Dashboard from '../dasboard/dasboard';
+import Dashboard from '../dashboard/dashboard';
 
 const Library = () => {
   return <Dashboard />;

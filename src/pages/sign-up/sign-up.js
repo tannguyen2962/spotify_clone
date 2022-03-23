@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, Select } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Styles from './signup.scss';
 
 const SignUp = () => {
+  const { Option } = Select;
   const [song, setSong] = useState({});
   const navigate = useNavigate();
 
@@ -83,6 +84,18 @@ const SignUp = () => {
           >
             <Input />
           </Form.Item>
+          <Form.Item name="position" label="Position">
+            <Select
+              defaultValue="User"
+              style={{
+                width: 100,
+              }}
+            >
+              <Option value="User">User</Option>
+              <Option value="Admin">Admin</Option>
+            </Select>
+          </Form.Item>
+
           <Form.Item>
             <Button type="primary" htmlType="submit">
               Submit

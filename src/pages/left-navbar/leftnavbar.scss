@@ -6,11 +6,8 @@
   display: flex;
   flex-direction: column;
   background-color: $color-black;
-  color: white;
-  padding: 1rem;
-  .active {
-    color: red;
-  }
+  color: rgb(239, 243, 235);
+  padding: 14px;
 
   .title {
     display: flex;
@@ -45,10 +42,20 @@
       padding: 0 !important;
     }
     .icon {
-      opacity: 0.8;
       text-decoration: none;
       display: flex;
       align-items: center;
+      color: #9cdfa1;
+      opacity: 0.85;
+      &:hover {
+        opacity: 1;
+        svg {
+          fill: #ffffff;
+        }
+        span {
+          color: #ffffff;
+        }
+      }
 
       svg {
         width: 3rem;
@@ -56,7 +63,7 @@
         padding: 5px 10px;
       }
       a {
-        color: $color-white;
+        color: #e2e9de;
         text-decoration: none;
 
         span {
@@ -75,6 +82,7 @@
 
       align-items: center;
       a {
+        color: $color-white;
         span {
           align-items: center;
           font-size: 0.875rem;

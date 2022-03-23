@@ -42,6 +42,11 @@
 
       span[class*='ant-menu-title-content'] {
         color: $color-white;
+        .btnRedirect {
+          background-color: transparent;
+          border: 0px;
+          padding: 0;
+        }
       }
     }
   }

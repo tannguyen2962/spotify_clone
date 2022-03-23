@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Table, Space, Modal, Form, Input, Button, message } from 'antd';
 import axios from 'axios';
 import Search from '../header/header';
-import Styles from './dasboard.scss';
+import Styles from './dashboard.scss';
 
 const { Column } = Table;
 
@@ -98,7 +98,7 @@ const Dashboard = () => {
 
   const renderSongTable = () => {
     return (
-      <div style={{ padding: '16px' }}>
+      <div>
         <Table dataSource={song} rowKey="_id" pageNumber={5}>
           <Column width={200} align="center" title="Name" dataIndex="fullname" key="fullname" />
           <Column align="center" title="Artist" dataIndex="artist" key="artist" />

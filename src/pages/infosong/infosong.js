@@ -113,7 +113,7 @@ const InfoSong = () => {
           .filter((listSong) => listSong.artist === findSong.artist)
           .map((song) => {
             return (
-              <div key={song.id} className={styles.song}>
+              <div key={song._id} className={styles.song}>
                 <img
                   alt="example"
                   src={`${song.avatar}`}

@@ -64,6 +64,15 @@
       color: white;
     }
   }
+  .audioplayer {
+    padding: 20px;
+    width: 100vw;
+    // background-color: $color-black;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+  }
   .listSong {
     margin-left: 25px;
     display: flex;

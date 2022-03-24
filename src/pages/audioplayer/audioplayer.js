@@ -8,10 +8,9 @@ const Player = () => {
     <div>
       <div className={Style.audioplayer}>
         <AudioPlayer
-          src="[AudiConvert] Binz Da Poet TOULIVER x BINZ - 'BIGCITYBOI' (Official Music Video).mp3"
+          src="https://ia601409.us.archive.org/12/items/binz-da-poet-touliver-x-binz-bigcityboi/Binz%20Da%20Poet%20TOULIVER%20x%20BINZ%20-%20%27BIGCITYBOI%27.mp3"
           autoPlay
           controls
-          loop
         />
       </div>
     </div>

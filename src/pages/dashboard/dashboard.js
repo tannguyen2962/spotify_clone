@@ -98,7 +98,7 @@ const Dashboard = () => {
 
   const renderSongTable = () => {
     return (
-      <div>
+      <div className={Styles.formData}>
         <Table dataSource={song} rowKey="_id" pageNumber={5}>
           <Column width={200} align="center" title="Name" dataIndex="fullname" key="fullname" />
           <Column align="center" title="Artist" dataIndex="artist" key="artist" />
@@ -139,11 +139,14 @@ const Dashboard = () => {
   };
 
   return (
-    <div className={Styles.form}>
-      <Search />
-      {renderAddSongButton()}
-      {renderCreateEditFormModal()}
-      {renderSongTable()}
+    <div style={{ padding: '20x' }}>
+      {' '}
+      <div className={Styles.form}>
+        <Search />
+        {renderAddSongButton()}
+        {renderCreateEditFormModal()}
+        {renderSongTable()}
+      </div>
     </div>
   );
 };

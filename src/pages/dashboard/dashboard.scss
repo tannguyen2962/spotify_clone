@@ -1,13 +1,15 @@
 .form {
+  width: 100%;
   text-align: center;
   .btnAdd {
     width: 100%;
     display: flex;
     justify-content: flex-end;
   }
-  tbody[class*='ant-table-tbody'] {
-    tr {
-      background-color: white;
+  .formData {
+    padding-left: 10px;
+    td[class*='ant-table-cell'] {
+      padding: 4px;
     }
   }
 }

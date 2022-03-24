@@ -3,6 +3,7 @@ import axios from 'axios';
 import { message } from 'antd';
 import SVG from 'react-inlinesvg';
 import { useParams, useNavigate } from 'react-router-dom';
+import AudioPlayer from 'react-h5-audio-player';
 
 import Header from '../header/header';
 import styles from './infosong.scss';
@@ -159,6 +160,13 @@ const InfoSong = () => {
           <h2> More song {findSong.artist}</h2>
         </div>
         {listSongByArtist()}
+      </div>
+      <div className={styles.audioplayer}>
+        <AudioPlayer
+          src="https://ia601409.us.archive.org/12/items/binz-da-poet-touliver-x-binz-bigcityboi/Binz%20Da%20Poet%20TOULIVER%20x%20BINZ%20-%20%27BIGCITYBOI%27.mp3"
+          autoPlay
+          controls
+        />
       </div>
     </div>
   );

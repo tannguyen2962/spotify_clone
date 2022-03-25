@@ -65,14 +65,40 @@
     }
   }
   .audioplayer {
-    padding: 20px;
     width: 100vw;
-    // background-color: $color-black;
+    background-color: rgba(0, 0, 0, 0.4);
     position: fixed;
     bottom: 0;
     left: 0;
     z-index: 999;
+    .titleSong {
+      padding-left: 10px;
+      display: flex;
+      align-items: center;
+      .avatar {
+        :active {
+          animation-duration: infinite;
+        }
+
+        img {
+          border-radius: 50%;
+        }
+      }
+      .title {
+        h2 {
+          color: #ffffff;
+        }
+      }
+    }
+
+    div[class*='rhap_container'] {
+      background-color: transparent;
+      div[class*='rhap_progress-bar'] {
+        background-color: rgb(16, 185, 241);
+      }
+    }
   }
+
   .listSong {
     margin-left: 25px;
     display: flex;

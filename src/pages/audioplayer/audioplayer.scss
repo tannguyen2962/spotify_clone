@@ -2,8 +2,34 @@
   padding: 20px;
   width: 100vw;
   // background-color: $color-black;
+  background-color: transparent;
   position: fixed;
   bottom: 0;
   left: 0;
   z-index: 999;
+  .title {
+    display: flex;
+    align-items: center;
+    .avatar {
+      :active {
+        animation-duration: infinite;
+      }
+      padding: 10px;
+      img {
+        border-radius: 50%;
+      }
+    }
+    .title {
+      h2 {
+        color: #ffffff;
+      }
+    }
+  }
+
+  div[class*='rhap_container'] {
+    background-color: transparent;
+    div[class*='rhap_progress-bar'] {
+      background-color: rgb(20 177 224);
+    }
+  }
 }

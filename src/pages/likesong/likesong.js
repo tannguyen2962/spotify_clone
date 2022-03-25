@@ -22,14 +22,14 @@ const LikeSong = () => {
 
   useEffect(() => {
     getLikeSong();
-  }, []);
+  });
 
   return (
     <div className={Styles.likeSong}>
       <div>
         <Header />
       </div>
-      <div className={Styles.listsong}>
+      <div className={Styles.listSong}>
         {listLikeSongs.map((song) => {
           return (
             <div key={song._id} className={Styles.song}>

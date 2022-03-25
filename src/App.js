@@ -7,7 +7,6 @@ import Search from './pages/search/search';
 import LikeSong from './pages/likesong/likesong';
 import InfoSong from './pages/infosong/infosong';
 import LeftNavbar from './pages/left-navbar/leftnavbar';
-import Audio from './pages/audioplayer/audioplayer';
 import Dashboard from './pages/dashboard/dashboard';
 import SignUp from './pages/sign-up/sign-up';
 import SignIn from './pages/sign-in/sign-in';
@@ -30,10 +29,6 @@ const App = () => {
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
-          <Routes>
-            <Route path="/audio" element={<Audio />} />
-          </Routes>
-
           <Routes>
             <Route path="/likesong" element={<LikeSong />} />
           </Routes>

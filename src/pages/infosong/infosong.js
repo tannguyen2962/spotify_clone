@@ -10,6 +10,7 @@ import styles from './infosong.scss';
 
 const InfoSong = () => {
   const navigate = useNavigate();
+
   const [findSong, setFindSong] = useState([]);
   const [likeSong, setLikeSong] = useState({});
   const [listSongs, setListSongs] = useState([]);
@@ -99,7 +100,7 @@ const InfoSong = () => {
           </button>
         ) : (
           <button onClick={like}>
-            <SVG src="src/assets/svg/icon-plus.svg" style={{ width: 40, height: 40 }} />
+            <SVG src="src/assets/svg/icon-red.svg" style={{ width: 40, height: 40 }} />
           </button>
         )}
         <span>{lengthSongs.length}</span>
@@ -145,6 +146,7 @@ const InfoSong = () => {
     getLikeSong();
     getLike();
     getSongFromArtist();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [likeSong, id]);
 
   return (
@@ -162,11 +164,16 @@ const InfoSong = () => {
         {listSongByArtist()}
       </div>
       <div className={styles.audioplayer}>
-        <AudioPlayer
-          src="https://ia601409.us.archive.org/12/items/binz-da-poet-touliver-x-binz-bigcityboi/Binz%20Da%20Poet%20TOULIVER%20x%20BINZ%20-%20%27BIGCITYBOI%27.mp3"
-          autoPlay
-          controls
-        />
+        <div className={styles.titleSong}>
+          <div className={styles.avatar}>
+            <img alt="example" src={`${findSong.avatar}`} style={{ width: 40, height: 40 }} />
+          </div>
+
+          <div className={styles.title}>
+            <h2> {findSong.fullname}</h2>
+          </div>
+        </div>
+        <AudioPlayer src={`${findSong.link}`} autoPlay controls onClickPrevious onClickNext />
       </div>
     </div>
   );

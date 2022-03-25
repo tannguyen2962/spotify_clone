@@ -34,19 +34,9 @@ const LeftNavbar = () => {
             <span> Your Library</span>
           </NavLink>
         </li>
-        <li className={styles.icon}>
-          <SVG src="src/assets/svg/library-icon.svg" />
-          <NavLink exact="true" to="/audio">
-            <span> audio</span>
-          </NavLink>
-        </li>
       </ul>
       {/* bottom-navbar */}
       <div className={styles.bottomNavbar}>
-        <div className={styles.iconBottom}>
-          <SVG src="src/assets/svg/icon-plus.svg" />
-          <span> Create Playlist</span>
-        </div>
         <div className={styles.iconBottom}>
           <SVG src="src/assets/svg/icon-heart.svg" />
           <NavLink exact="true" to="/likesong">

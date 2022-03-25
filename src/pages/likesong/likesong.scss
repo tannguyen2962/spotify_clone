@@ -1,4 +1,4 @@
-.listsong {
+.listSong {
   display: flex;
   flex-wrap: wrap;
   .song {
@@ -31,7 +31,7 @@
         top: 45%;
         left: 60%;
         transform: translate(-50%, -50%);
-        animation: mymove 1s;
+        animation: myMove 1s;
         animation-duration: 1s;
         transition: 0.5s;
 

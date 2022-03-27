@@ -90,18 +90,19 @@ const InfoSong = () => {
     return (
       <div className={styles.option}>
         <button>
-          <SVG src="src/assets/svg/play-icon.svg" style={{ width: 60, height: 60 }} />
+          <SVG src="/src/assets/svg/play-icon.svg" style={{ width: 60, height: 60 }} />
         </button>
 
         {likeSong ? (
           <button onClick={() => unLike(findSong)}>
-            <SVG src="src/assets/svg/icon-heart.svg" style={{ width: 40, height: 40 }} />
+            <SVG src="/src/assets/svg/icon-heart.svg" style={{ width: '40px', height: '40px' }} />
           </button>
         ) : (
           <button onClick={like}>
-            <SVG src="src/assets/svg/plus.svg" style={{ width: 40, height: 40 }} />
+            <SVG src="/src/assets/svg/plus.svg" style={{ width: '40px', height: '40px' }} />
           </button>
         )}
+
         <span>{lengthSongs.length}</span>
       </div>
     );

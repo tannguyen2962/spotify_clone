@@ -26,6 +26,8 @@ const SignIn = () => {
       localStorage.setItem('targetUser', JSON.stringify(targetUser));
       message.success('login success');
       navigate('/search');
+    } else {
+      message.error('please try again');
     }
   };
 

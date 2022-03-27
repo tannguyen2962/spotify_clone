@@ -133,3 +133,5 @@ dist
 # Project
 
 public/
+
+.vercel

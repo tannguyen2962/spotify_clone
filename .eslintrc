@@ -22,6 +22,7 @@
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/media-has-caption": "off",
     "no-underscore-dangle": "off",
+    "react-hooks/exhaustive-deps": "warn",
     "react/button-has-type": "off",
     "react/forbid-prop-types": "off",
     "react/jsx-boolean-value": "off",

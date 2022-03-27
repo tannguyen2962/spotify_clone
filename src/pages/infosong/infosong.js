@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { message } from 'antd';
-import SVG from 'react-inlinesvg';
 import { useParams, useNavigate } from 'react-router-dom';
 import AudioPlayer from 'react-h5-audio-player';
-
+import SVG from 'react-inlinesvg';
 import Header from '../header/header';
 import styles from './infosong.scss';
 
@@ -32,7 +31,7 @@ const InfoSong = () => {
     setListSongs(detectedListSong);
   };
 
-  const getLike = async () => {
+  const getNumOfLikes = async () => {
     const list = await axios.get(`http://localhost:4000/getLikeSongsBySongId/${id}`);
     const detectedLikeSong = list.data;
     setLengthSongs(detectedLikeSong);
@@ -100,7 +99,7 @@ const InfoSong = () => {
           </button>
         ) : (
           <button onClick={like}>
-            <SVG src="src/assets/svg/icon-red.svg" style={{ width: 40, height: 40 }} />
+            <SVG src="src/assets/svg/plus.svg" style={{ width: 40, height: 40 }} />
           </button>
         )}
         <span>{lengthSongs.length}</span>
@@ -143,10 +142,9 @@ const InfoSong = () => {
 
   useEffect(() => {
     getSongs();
-    getLikeSong();
-    getLike();
     getSongFromArtist();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    getLikeSong();
+    getNumOfLikes();
   }, [likeSong, id]);
 
   return (

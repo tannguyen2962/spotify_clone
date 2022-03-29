@@ -1,7 +1,5 @@
 {
-  "exclude": [
-    "node_modules"
-  ],
+  "exclude": ["node_modules"],
   "compilerOptions": {
     "target": "es6",
     "module": "es6",
@@ -9,10 +7,7 @@
     "experimentalDecorators": true,
     "baseUrl": ".",
     "paths": {
-      "*": [
-        "*",
-        "src/*"
-      ]
+      "*": ["src/*"]
     }
   }
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Space, Modal, Form, Input, Button, message } from 'antd';
 import axios from 'axios';
+import getRequestUrl from 'utils/get-request-url';
 import Search from '../header/header';
 import Styles from './dashboard.scss';
 
@@ -13,20 +14,20 @@ const Dashboard = () => {
   const [mode, setMode] = useState('');
 
   const dataSong = () => {
-    axios.get('http://localhost:4000/songs').then((response) => {
+    axios.get(getRequestUrl('songs')).then((response) => {
       setSong(response.data);
     });
   };
 
   const updateSong = async (formValues) => {
     if (mode === 'edit') {
-      await axios.put(`http://localhost:4000/song/${selectedSong._id}`, formValues);
+      await axios.put(getRequestUrl(`song/${selectedSong._id}`), formValues);
 
       message.success('update success');
     }
 
     if (mode === 'create') {
-      await axios.post('http://localhost:4000/song/', formValues);
+      await axios.post(getRequestUrl('song'), formValues);
 
       setSelectedSong(null);
       message.success('update success');
@@ -115,7 +116,7 @@ const Dashboard = () => {
 
                 <button
                   onClick={async () => {
-                    await axios.delete(`http://localhost:4000/song/${record._id}`);
+                    await axios.delete(getRequestUrl(`song/${record._id}`));
                   }}
                 >
                   Delete

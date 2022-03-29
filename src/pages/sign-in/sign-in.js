@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Input, Button, message } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import getRequestUrl from 'utils/get-request-url';
 import axios from 'axios';
 import Styles from './signin.scss';
 
@@ -9,7 +10,7 @@ const SignIn = () => {
   const navigate = useNavigate();
 
   const getUser = async () => {
-    await axios.get('http://localhost:4000/users').then((response) => {
+    await axios.get(getRequestUrl('users')).then((response) => {
       setUsers(response.data);
     });
   };
@@ -37,43 +38,45 @@ const SignIn = () => {
 
   return (
     <div className={Styles.form}>
-      <div className={Styles.title}>
-        <h2> Sign In</h2>
-      </div>
+      <div className={Styles.bgForm}>
+        <div className={Styles.title}>
+          <h2> SIGN IN</h2>
+          <h3> Login to listen free music!</h3>
+        </div>
+        <div className={Styles.formContent}>
+          <Form name="nest-messages" onFinish={Finish} initialValues={users}>
+            <Form.Item
+              name="email"
+              label="Email"
+              rules={[
+                {
+                  type: 'email',
+                  required: true,
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              name="password"
+              label="Password"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input.Password />
+            </Form.Item>
 
-      <div className={Styles.formContent}>
-        <Form name="nest-messages" onFinish={Finish} initialValues={users}>
-          <Form.Item
-            name="email"
-            label="Email"
-            rules={[
-              {
-                type: 'email',
-                required: true,
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            name="password"
-            label="Password"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input.Password />
-          </Form.Item>
-
-          <Form.Item>
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-            <Button onClick={toSignUp}> SignUp</Button>
-          </Form.Item>
-        </Form>
+            <Form.Item>
+              <Button type="primary" htmlType="submit">
+                Sign In
+              </Button>
+              <Button onClick={toSignUp}> Sign Up</Button>
+            </Form.Item>
+          </Form>
+        </div>
       </div>
     </div>
   );

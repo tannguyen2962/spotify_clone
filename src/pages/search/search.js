@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SVG from 'react-inlinesvg';
 import axios from 'axios';
+import getRequestUrl from 'utils/get-request-url';
 import { useNavigate } from 'react-router-dom';
 import { Input, AutoComplete, Menu } from 'antd';
 // import Audio from '../audioplayer/audioplayer';
@@ -16,7 +17,7 @@ const Search = () => {
   const user = pureUser ? JSON.parse(pureUser) : null;
 
   const dataSong = async () => {
-    await axios.get('http://localhost:4000/songs').then((response) => {
+    await axios.get(getRequestUrl('songs')).then((response) => {
       setSongs(response.data);
     });
   };

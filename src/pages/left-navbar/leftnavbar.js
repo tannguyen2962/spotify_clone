@@ -30,7 +30,7 @@ const LeftNavbar = () => {
         </li>
         <li className={styles.icon}>
           <SVG src="src/assets/svg/library-icon.svg" />
-          <NavLink exact="true" to="/library">
+          <NavLink exact="true" to="/likesong">
             <span> Your Library</span>
           </NavLink>
         </li>

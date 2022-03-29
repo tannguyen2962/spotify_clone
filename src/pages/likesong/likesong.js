@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SVG from 'react-inlinesvg';
 import { useNavigate } from 'react-router-dom';
+import getRequestUrl from 'utils/get-request-url';
 import Header from '../header/header';
 import Styles from './likesong.scss';
 
@@ -12,7 +13,7 @@ const LikeSong = () => {
   const navigate = useNavigate();
 
   const getLikeSong = async () => {
-    const list = await axios.get(`http://localhost:4000/getLikeSongsByUserId/${targetUser._id}`);
+    const list = await axios.get(getRequestUrl(`getLikeSongsByUserId/${targetUser._id}`));
     setListLikeSongs(list.data);
   };
 

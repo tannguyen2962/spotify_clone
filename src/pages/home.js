@@ -1,9 +1,9 @@
 import React from 'react';
 
-import SignUp from './sign-up/sign-up';
+import SignIn from './sign-in/sign-in';
 
 const Home = () => {
-  return <SignUp />;
+  return <SignIn />;
 };
 
 export default Home;

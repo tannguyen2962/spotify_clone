@@ -4,6 +4,9 @@ import { message } from 'antd';
 import { useParams, useNavigate } from 'react-router-dom';
 import AudioPlayer from 'react-h5-audio-player';
 import SVG from 'react-inlinesvg';
+
+import getRequestUrl from 'utils/get-request-url';
+
 import Header from '../header/header';
 import styles from './infosong.scss';
 
@@ -17,34 +20,32 @@ const InfoSong = () => {
   const [lengthSongs, setLengthSongs] = useState([]);
   const { id } = useParams();
   const pureUser = localStorage.getItem('targetUser');
-  const targetUser = JSON.parse(pureUser);
+  const targetUser = pureUser ? JSON.parse(pureUser) : null;
 
   const getSongs = async () => {
-    const songResult = await axios.get(`http://localhost:4000/song/${id}`);
+    const songResult = await axios.get(getRequestUrl(`song/${id}`));
     const detectedSong = songResult.data;
     setFindSong(detectedSong);
   };
 
   const getSongFromArtist = async () => {
-    const allListSong = await axios.get('http://localhost:4000/songs');
+    const allListSong = await axios.get(getRequestUrl('songs'));
     const detectedListSong = allListSong.data;
     setListSongs(detectedListSong);
   };
 
   const getNumOfLikes = async () => {
-    const list = await axios.get(`http://localhost:4000/getLikeSongsBySongId/${id}`);
+    const list = await axios.get(getRequestUrl(`getLikeSongsBySongId/${id}`));
     const detectedLikeSong = list.data;
     setLengthSongs(detectedLikeSong);
   };
 
   const getLikeSong = async () => {
-    const resultLikeSong = await axios.get(
-      `http://localhost:4000/likesong/${targetUser._id}/${id}`,
-    );
+    const resultLikeSong = await axios.get(getRequestUrl(`likesong/${targetUser._id}/${id}`));
     setLikeSong(resultLikeSong.data);
   };
 
-  const data = {
+  const dataSong = {
     userId: targetUser._id,
     songId: id,
   };
@@ -53,11 +54,11 @@ const InfoSong = () => {
 
   const unLike = async () => {
     message.error(`${findSong.fullname} has been delete to LikeSong`);
-    await axios.delete(`http://localhost:4000/likesong/${likeSong._id}`);
+    await axios.delete(getRequestUrl(`likesong/${likeSong._id}`));
   };
 
   const like = async () => {
-    const addLikeSong = await axios.post('http://localhost:4000/likesong', data);
+    const addLikeSong = await axios.post(getRequestUrl('likesong'), dataSong);
     setLikeSong(addLikeSong);
 
     message.success(`${findSong.fullname} has been add to LikeSong`);
@@ -144,9 +145,15 @@ const InfoSong = () => {
   useEffect(() => {
     getSongs();
     getSongFromArtist();
-    getLikeSong();
+  }, [id]);
+
+  useEffect(() => {
     getNumOfLikes();
-  }, [likeSong, id]);
+  }, [lengthSongs]);
+
+  useEffect(() => {
+    getLikeSong();
+  }, [likeSong]);
 
   return (
     <div className={styles.fullInfoSong}>

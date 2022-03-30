@@ -5,7 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import AudioPlayer from 'react-h5-audio-player';
 import SVG from 'react-inlinesvg';
 
-import getRequestUrl from 'utils/get-request-url';
+// import ApiUrl from 'utils/get-request-url';
 
 import Header from '../header/header';
 import styles from './infosong.scss';
@@ -23,25 +23,29 @@ const InfoSong = () => {
   const targetUser = pureUser ? JSON.parse(pureUser) : null;
 
   const getSongs = async () => {
-    const songResult = await axios.get(getRequestUrl(`song/${id}`));
+    const songResult = await axios.get(`https://svmonggodbspotify.herokuapp.com/song/${id}`);
     const detectedSong = songResult.data;
     setFindSong(detectedSong);
   };
 
   const getSongFromArtist = async () => {
-    const allListSong = await axios.get(getRequestUrl('songs'));
+    const allListSong = await axios.get(`https://svmonggodbspotify.herokuapp.com/songs`);
     const detectedListSong = allListSong.data;
     setListSongs(detectedListSong);
   };
 
   const getNumOfLikes = async () => {
-    const list = await axios.get(getRequestUrl(`getLikeSongsBySongId/${id}`));
+    const list = await axios.get(
+      `https://svmonggodbspotify.herokuapp.com/getLikeSongsBySongId/${id}`,
+    );
     const detectedLikeSong = list.data;
     setLengthSongs(detectedLikeSong);
   };
 
   const getLikeSong = async () => {
-    const resultLikeSong = await axios.get(getRequestUrl(`likesong/${targetUser._id}/${id}`));
+    const resultLikeSong = await axios.get(
+      `https://svmonggodbspotify.herokuapp.com/likesong/${targetUser._id}/${id}`,
+    );
     setLikeSong(resultLikeSong.data);
   };
 
@@ -54,11 +58,14 @@ const InfoSong = () => {
 
   const unLike = async () => {
     message.error(`${findSong.fullname} has been delete to LikeSong`);
-    await axios.delete(getRequestUrl(`likesong/${likeSong._id}`));
+    await axios.delete(`https://svmonggodbspotify.herokuapp.com/likesong/${likeSong._id}`);
   };
 
   const like = async () => {
-    const addLikeSong = await axios.post(getRequestUrl('likesong'), dataSong);
+    const addLikeSong = await axios.post(
+      `https://svmonggodbspotify.herokuapp.com/likesong`,
+      dataSong,
+    );
     setLikeSong(addLikeSong);
 
     message.success(`${findSong.fullname} has been add to LikeSong`);

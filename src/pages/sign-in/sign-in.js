@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Input, Button, message } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import getRequestUrl from 'utils/get-request-url';
+
 import axios from 'axios';
-import Styles from './signin.scss';
+import Styles from './signIn.scss';
 
 const SignIn = () => {
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
 
   const getUser = async () => {
-    await axios.get(getRequestUrl('users')).then((response) => {
+    await axios.get('https://svmonggodbspotify.herokuapp.com/users').then((response) => {
       setUsers(response.data);
     });
   };

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Input, AutoComplete, Menu } from 'antd';
 import { useNavigate } from 'react-router-dom';
-
 import SVG from 'react-inlinesvg';
 import Styles from './header.scss';
 

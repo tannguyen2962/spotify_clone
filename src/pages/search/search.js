@@ -3,7 +3,7 @@ import SVG from 'react-inlinesvg';
 import axios from 'axios';
 import ApiUrl from 'utils/get-request-url';
 import { useNavigate } from 'react-router-dom';
-import { Input, AutoComplete, Menu } from 'antd';
+import { Input, AutoComplete, Menu, message } from 'antd';
 
 import Styles from './search.scss';
 
@@ -12,7 +12,6 @@ const Search = () => {
 
   const [songs, setSongs] = useState([]);
   const [songFilter, setSongFilter] = useState('');
-
   const { SubMenu } = Menu;
   const pureUser = localStorage.getItem('targetUser');
   const user = pureUser ? JSON.parse(pureUser) : null;
@@ -28,7 +27,12 @@ const Search = () => {
   };
 
   const redirectToSongDetail = (song) => {
-    navigate(`/album/${song._id}`);
+    if (pureUser) {
+      navigate(`/album/${song._id}`);
+    } else {
+      message.error('Please Login To Listen');
+      navigate('/signIn');
+    }
   };
 
   const logOut = () => {

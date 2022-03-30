@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import SVG from 'react-inlinesvg';
 import axios from 'axios';
-// import ApiUrl from 'utils/get-request-url';
+
 import { useNavigate } from 'react-router-dom';
 import { Input, AutoComplete, Menu } from 'antd';
-// import Audio from '../audioplayer/audioplayer';
+
 import Styles from './search.scss';
 
 const Search = () => {
@@ -12,6 +12,7 @@ const Search = () => {
 
   const [songs, setSongs] = useState([]);
   const [songFilter, setSongFilter] = useState('');
+
   const { SubMenu } = Menu;
   const pureUser = localStorage.getItem('targetUser');
   const user = pureUser ? JSON.parse(pureUser) : null;

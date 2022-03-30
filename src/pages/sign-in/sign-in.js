@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Input, Button, message } from 'antd';
 import { useNavigate } from 'react-router-dom';
-
 import axios from 'axios';
+import ApiUrl from '../../utils/get-request-url';
+
 import Styles from './signIn.scss';
 
 const SignIn = () => {
@@ -10,7 +11,7 @@ const SignIn = () => {
   const navigate = useNavigate();
 
   const getUser = async () => {
-    await axios.get('https://svmonggodbspotify.herokuapp.com/users').then((response) => {
+    await axios.get(ApiUrl('users')).then((response) => {
       setUsers(response.data);
     });
   };

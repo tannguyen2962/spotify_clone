@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, Select } from 'antd';
-// import ApiUrl from 'utils/get-request-url';
+import ApiUrl from 'utils/get-request-url';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Styles from './signup.scss';
@@ -15,7 +15,7 @@ const SignUp = () => {
   };
 
   const Finish = (formValue) => {
-    axios.post('https://svmonggodbspotify.herokuapp.com/user', formValue).then((response) => {
+    axios.post(ApiUrl('user'), formValue).then((response) => {
       setSong(response.data);
       navigate('/signIn');
     });

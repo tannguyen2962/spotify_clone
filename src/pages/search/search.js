@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SVG from 'react-inlinesvg';
 import axios from 'axios';
-
+import ApiUrl from 'utils/get-request-url';
 import { useNavigate } from 'react-router-dom';
 import { Input, AutoComplete, Menu } from 'antd';
 
@@ -18,7 +18,7 @@ const Search = () => {
   const user = pureUser ? JSON.parse(pureUser) : null;
 
   const dataSong = async () => {
-    await axios.get('https://svmonggodbspotify.herokuapp.com/songs').then((response) => {
+    await axios.get(ApiUrl('songs')).then((response) => {
       setSongs(response.data);
     });
   };

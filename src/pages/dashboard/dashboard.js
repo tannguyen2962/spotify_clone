@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Space, Modal, Form, Input, Button, message } from 'antd';
 import axios from 'axios';
-// import ApiUrl from 'utils/get-request-url';
+import ApiUrl from 'utils/get-request-url';
 import Search from '../header/header';
 import Styles from './dashboard.scss';
 
@@ -14,23 +14,20 @@ const Dashboard = () => {
   const [mode, setMode] = useState('');
 
   const dataSong = () => {
-    axios.get('https://svmonggodbspotify.herokuapp.com/songs').then((response) => {
+    axios.get(ApiUrl('songs')).then((response) => {
       setSong(response.data);
     });
   };
 
   const updateSong = async (formValues) => {
     if (mode === 'edit') {
-      await axios.put(
-        `https://svmonggodbspotify.herokuapp.com/song/${selectedSong._id}`,
-        formValues,
-      );
+      await axios.put(ApiUrl(`song/${selectedSong._id}`), formValues);
 
       message.success('update success');
     }
 
     if (mode === 'create') {
-      await axios.post('https://svmonggodbspotify.herokuapp.com/song', formValues);
+      await axios.post(ApiUrl('song'), formValues);
 
       setSelectedSong(null);
       message.success('update success');
@@ -119,9 +116,7 @@ const Dashboard = () => {
 
                 <button
                   onClick={async () => {
-                    await axios.delete(
-                      `https://svmonggodbspotify.herokuapp.com/song/${record._id}`,
-                    );
+                    await axios.delete(ApiUrl(`song/${record._id}`));
                   }}
                 >
                   Delete

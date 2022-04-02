@@ -25,7 +25,14 @@ const Player = () => {
             <h2> title</h2>
           </div>
         </div>
-        <AudioPlayer src={arr} autoPlay controls onClickPrevious onClickNext />
+        <AudioPlayer
+          src={arr}
+          autoPlay
+          controls
+          onClickPrevious
+          onClickNext
+          showSkipControls={true}
+        />
       </div>
     </div>
   );

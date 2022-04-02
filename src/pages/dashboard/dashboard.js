@@ -105,7 +105,14 @@ const Dashboard = () => {
           <Column align="center" title="Artist" dataIndex="artist" key="artist" />
           <Column align="center" title="Category" dataIndex="category" key="category" />
           <Column align="center" title="Link" dataIndex="link" key="Link" />
-          <Column align="center" title="Avatar" dataIndex="avatar" key="avatar" />
+          <Column
+            align="center"
+            title="Avatar"
+            dataIndex="avatar"
+            key="avatar"
+            style={{ backgroundColor: '#364d79' }}
+          />
+
           <Column
             align="center"
             title="Action"
